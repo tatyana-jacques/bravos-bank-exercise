@@ -1,24 +1,20 @@
-// classes de domínio (modelo)
 
 class ContaBancaria {
     constructor(agencia, numeroConta, saldo){
     this.agencia = agencia
     this.numeroConta = numeroConta
     this.saldo = saldo
-    this.operacoes = [] ////é um array de lançamento de débido ou crédito
+    this.operacoes = [] 
     }
 
     debitar (valor) {
         if (valor > this.saldo){
         return false
         }
-
-        //lógica para debito ou saque
         this.saldo -= valor
         const lancamento = new Lancamento ('débito', valor)
         this.operacoes.push(lancamento)
-        return true
-        
+        return true 
     }
 
     creditar (valor) {
@@ -28,7 +24,6 @@ class ContaBancaria {
 
     }
 
-    //retorna as operações/lançamentos feitos de forma formatada
     gerarExtrato (){
         const extrato = []
         for (let i=0; i<this.operacoes.length; i++){
@@ -36,7 +31,6 @@ class ContaBancaria {
         const formatada = `Data: ${operacao.data.toLocaleString('pt-BR')} - ${operacao.tipo} - R$ ${operacao.valor}`
         extrato.push(formatada)
         }
-
         return extrato
     }
      
@@ -47,13 +41,11 @@ class Lancamento {
         this.tipo = tipo
         this.valor = valor
         this.data = new Date () //data atual
-
     }
 
 }
 
 var conta = new ContaBancaria(1212, 333, 1000);
-
 
 // controller: interação com UI
 function efetuarOperacao(acao) {
@@ -85,11 +77,8 @@ function efetuarOperacao(acao) {
         case 'extrato':
            consultarExtrato()
             break
-
             default:
-            //imprimirTela()
-         
-    
+ 
 }
 
 limparValor()
@@ -113,7 +102,6 @@ function consultarExtrato(){
     for (let i =0; i<extrato.length; i++){
         formatado +=extrato[i] + '\n'
     }
-    //alert (formatado)
     const texto3 = document.getElementById ("saidaCinza")
     texto3.innerHTML = formatado
 }

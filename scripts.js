@@ -19,7 +19,7 @@ class ContaBancaria {
 
     creditar (valor) {
         this.saldo +=valor
-        const lancamento = new Lancamento ("crédito", valor)
+        const lancamento = new Lancamento ('crédito', valor)
         this.operacoes.push (lancamento)
 
     }
@@ -40,24 +40,22 @@ class Lancamento {
     constructor (tipo, valor){
         this.tipo = tipo
         this.valor = valor
-        this.data = new Date () //data atual
+        this.data = new Date () 
     }
 
 }
 
 var conta = new ContaBancaria(1212, 333, 1000);
 
-// controller: interação com UI
 function efetuarOperacao(acao) {
     let valor = obterValor()
 
     if (acao!=='saldo' && acao !== 'extrato'){
-        //validar o valor de entrada
         const isValido = validar (valor)
         if (!isValido){
             return
         }
-        valor = parseFloat(valor) //convertendo de string para numérico fracionário
+        valor = parseFloat(valor) 
     }
 
     switch (acao){

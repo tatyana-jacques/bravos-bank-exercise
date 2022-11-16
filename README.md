@@ -10,5 +10,5 @@
 <br>
 <br>
 <div  align= "center">
- <img  src="assets/project_image.png" width = 500px>
+ <img  src="assets/image.png" width = 500px>
  </div>
